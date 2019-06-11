@@ -16,5 +16,11 @@ namespace SimpleCalculator.Tests
         {
             Calculator.Add("1").Should().Be(1);
         }
+        
+        [TestMethod]
+        public void Add_1Comma2_ShouldBe3()
+        {
+            Calculator.Add("1,2").Should().Be(3);
+        }
     }
 }
