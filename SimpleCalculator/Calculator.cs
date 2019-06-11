@@ -4,20 +4,15 @@ namespace SimpleCalculator
     {
         public static int Add(string numbers)
         {
-            if (numbers == "1")
-                return 1;
-            if (numbers.Contains(","))
+            if (numbers == "") return 0;
+            var values = numbers.Split(',');
+            var sum = 0;
+            foreach (var value in values)
             {
-                var values = numbers.Split(',');
-                var sum = 0;
-                foreach (var value in values)
-                {
-                    sum += int.Parse(value);
-                }
-
-                return sum;
+                sum += int.Parse(value);
             }
-            return 0;
+
+            return sum;
         }
     }
 }
