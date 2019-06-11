@@ -28,12 +28,17 @@ namespace SimpleCalculator.Tests
         {
             Calculator.Add("1,2,3").Should().Be(6);
         }
-        
-                
+
         [TestMethod]
         public void Add_1Comma2Comma3Comma4_ShouldBe6()
         {
             Calculator.Add("1,2,3,4").Should().Be(10);
+        }
+        
+        [TestMethod]
+        public void Add_1NewLine2Comma3_ShouldBe6()
+        {
+            Calculator.Add("1\n2,3").Should().Be(6);
         }
     }
 }
