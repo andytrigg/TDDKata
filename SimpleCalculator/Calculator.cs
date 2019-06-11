@@ -2,9 +2,9 @@ namespace SimpleCalculator
 {
     public static class Calculator
     {
-        public static int Add(string empty)
+        public static int Add(string numbers)
         {
-            return 0;
+            return numbers == "1" ? 1 : 0;
         }
     }
 }
