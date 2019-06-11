@@ -65,5 +65,19 @@ namespace SimpleCalculator.Tests
         {
             Calculator.Add("1,-1");
         }
+        
+        [TestMethod]
+        public void Add_MultipleNegativeNumbers_ShouldThrowExceptionWithMessageContainingAllNegativeNumbers()
+        {
+            try
+            {
+                Calculator.Add("-1,1,-3");
+                Assert.Fail("Expected exception");
+            }
+            catch (ArgumentException e)
+            {
+                e.Message.Should().Be("-1,-3");
+            }
+        }
     }
 }
