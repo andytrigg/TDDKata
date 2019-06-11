@@ -27,6 +27,8 @@ namespace SimpleCalculator
                     throw new ArgumentException();
 
                 var number = int.Parse(value);
+                if (number > 1000) 
+                    number = 0;
                 if (number < 0)
                     negativeNumbers.Add(number);
                 sum += number;
