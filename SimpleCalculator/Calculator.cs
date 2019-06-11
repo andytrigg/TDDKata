@@ -8,23 +8,14 @@ namespace SimpleCalculator
         public static int Add(string numbers)
         {
             if (numbers == "") return 0;
+            var delimiters = DetermineDelimiters(ref numbers);
+            numbers = numbers.Replace("\n", delimiters[0]);
+            return SumValues(numbers, delimiters);
+        }
 
-            var delimiter = ",";
-            if (numbers.StartsWith("//["))
-            {
-                var posLineFeed = numbers.IndexOf('\n');
-                delimiter = numbers.Substring(3, posLineFeed - 4);
-                numbers = numbers.Substring( posLineFeed + 1);
-            }
-            else if (numbers.StartsWith("//"))
-            {
-                delimiter = numbers[2].ToString();
-                numbers = numbers.Substring(4);
-            }
-
-            numbers = numbers.Replace("\n", delimiter);
-
-            var values = numbers.Split(delimiter);
+        private static int SumValues(string numbers, string[] delimiters)
+        {
+            var values = numbers.Split(delimiters, StringSplitOptions.None);
             var sum = 0;
             var negativeNumbers = new List<int>();
 
@@ -47,6 +38,24 @@ namespace SimpleCalculator
             }
 
             return sum;
+        }
+
+        private static string[] DetermineDelimiters(ref string numbers)
+        {
+            var delimiters = new[] {","};
+            if (numbers.StartsWith("//["))
+            {
+                var posLineFeed = numbers.IndexOf('\n');
+                delimiters = numbers.Substring(3, posLineFeed - 4).Replace("]", "").Split("[");
+                numbers = numbers.Substring(posLineFeed + 1);
+            }
+            else if (numbers.StartsWith("//"))
+            {
+                delimiters[0] = numbers[2].ToString();
+                numbers = numbers.Substring(4);
+            }
+
+            return delimiters;
         }
     }
 }
