@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace SimpleCalculator.Tests
@@ -39,6 +40,13 @@ namespace SimpleCalculator.Tests
         public void Add_1NewLine2Comma3_ShouldBe6()
         {
             Calculator.Add("1\n2,3").Should().Be(6);
+        }
+        
+                
+        [TestMethod, ExpectedException(typeof(ArgumentException))]
+        public void Add_InvalidInput_ShouldThrowException()
+        {
+            Calculator.Add("1,\n");
         }
     }
 }
