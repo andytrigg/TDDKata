@@ -9,7 +9,13 @@ namespace SimpleCalculator
             if (numbers.Contains(","))
             {
                 var values = numbers.Split(',');
-                return int.Parse(values[0]) + int.Parse(values[1]);
+                var sum = 0;
+                foreach (var value in values)
+                {
+                    sum += int.Parse(value);
+                }
+
+                return sum;
             }
             return 0;
         }
