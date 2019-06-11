@@ -9,25 +9,32 @@ namespace SimpleCalculator
         {
             if (numbers == "") return 0;
 
-            var delimiter = ',';
-            if (numbers.StartsWith("//"))
+            var delimiter = ",";
+            if (numbers.StartsWith("//["))
             {
-                delimiter = numbers[2];
+                var posLineFeed = numbers.IndexOf('\n');
+                delimiter = numbers.Substring(3, posLineFeed - 4);
+                numbers = numbers.Substring( posLineFeed + 1);
+            }
+            else if (numbers.StartsWith("//"))
+            {
+                delimiter = numbers[2].ToString();
                 numbers = numbers.Substring(4);
             }
-            numbers = numbers.Replace('\n', delimiter);
+
+            numbers = numbers.Replace("\n", delimiter);
 
             var values = numbers.Split(delimiter);
             var sum = 0;
             var negativeNumbers = new List<int>();
-                
+
             foreach (var value in values)
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new ArgumentException();
 
                 var number = int.Parse(value);
-                if (number > 1000) 
+                if (number > 1000)
                     number = 0;
                 if (number < 0)
                     negativeNumbers.Add(number);
