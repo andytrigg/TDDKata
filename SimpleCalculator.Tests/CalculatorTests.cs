@@ -76,7 +76,7 @@ namespace SimpleCalculator.Tests
             }
             catch (ArgumentException e)
             {
-                e.Message.Should().Be("-1,-3");
+                e.Message.Should().Be("negatives not allowed: -1,-3");
             }
         }
 

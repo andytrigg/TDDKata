@@ -34,7 +34,7 @@ namespace SimpleCalculator
 
             if (negativeNumbers.Count > 0)
             {
-                throw new ArgumentException(string.Join(",", negativeNumbers));
+                throw new ArgumentException($"negatives not allowed: {string.Join(",", negativeNumbers)}");
             }
 
             return sum;
