@@ -56,9 +56,14 @@ namespace SimpleCalculator.Tests
         }
         
         [TestMethod, ExpectedException(typeof(ArgumentException))]
-        public void Add_OneBegativeNumber_ShouldThrowException()
+        public void Add_OneNegativeNumber_ShouldThrowException()
         {
             Calculator.Add("-1");
+        }
+        [TestMethod, ExpectedException(typeof(ArgumentException))]
+        public void Add_OneNegativeNumberOnePositiveNumber_ShouldThrowException()
+        {
+            Calculator.Add("1,-1");
         }
     }
 }
