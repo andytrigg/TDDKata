@@ -11,5 +11,10 @@ namespace SimpleCalculator.Tests
             Calculator.Add("").Should().Be(0);
         }
 
+        [TestMethod]
+        public void Add_1_ShouldBe1()
+        {
+            Calculator.Add("1").Should().Be(1);
+        }
     }
 }
