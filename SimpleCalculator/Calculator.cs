@@ -1,3 +1,5 @@
+using System;
+
 namespace SimpleCalculator
 {
     public static class Calculator
@@ -11,6 +13,9 @@ namespace SimpleCalculator
             var sum = 0;
             foreach (var value in values)
             {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException();
+                
                 sum += int.Parse(value);
             }
 
