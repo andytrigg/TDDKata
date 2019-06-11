@@ -54,5 +54,11 @@ namespace SimpleCalculator.Tests
         {
             Calculator.Add("//;\n1;2").Should().Be(3);
         }
+        
+        [TestMethod, ExpectedException(typeof(ArgumentException))]
+        public void Add_OneBegativeNumber_ShouldThrowException()
+        {
+            Calculator.Add("-1");
+        }
     }
 }
