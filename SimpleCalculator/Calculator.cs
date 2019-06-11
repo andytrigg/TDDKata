@@ -22,8 +22,11 @@ namespace SimpleCalculator
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new ArgumentException();
-                
-                sum += int.Parse(value);
+
+                var number = int.Parse(value);
+                if (number < 0)
+                    throw new ArgumentException();
+                sum += number;
             }
 
             return sum;
