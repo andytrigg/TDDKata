@@ -4,7 +4,7 @@ namespace SimpleCalculator
     {
         public static int Add(string empty)
         {
-            throw new System.NotImplementedException();
+            return 0;
         }
     }
 }
