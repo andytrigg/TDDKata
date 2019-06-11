@@ -48,5 +48,11 @@ namespace SimpleCalculator.Tests
         {
             Calculator.Add("1,\n");
         }
+
+        [TestMethod]
+        public void Add_CustomerDelimiter_ShouldChangeExpectedDelimiter()
+        {
+            Calculator.Add("//;\n1;2").Should().Be(3);
+        }
     }
 }
