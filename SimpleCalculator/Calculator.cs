@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace SimpleCalculator
 {
@@ -18,6 +19,8 @@ namespace SimpleCalculator
 
             var values = numbers.Split(delimiter);
             var sum = 0;
+            var negativeNumbers = new List<int>();
+                
             foreach (var value in values)
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -25,8 +28,13 @@ namespace SimpleCalculator
 
                 var number = int.Parse(value);
                 if (number < 0)
-                    throw new ArgumentException();
+                    negativeNumbers.Add(number);
                 sum += number;
+            }
+
+            if (negativeNumbers.Count > 0)
+            {
+                throw new ArgumentException(string.Join(",", negativeNumbers));
             }
 
             return sum;
