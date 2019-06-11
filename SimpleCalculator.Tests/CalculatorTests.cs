@@ -79,5 +79,18 @@ namespace SimpleCalculator.Tests
                 e.Message.Should().Be("-1,-3");
             }
         }
+
+        [TestMethod]
+        public void Add_NumbersLessThanOrEqualTo1000_ShouldBeIncludedInResult()
+        {
+            
+            Calculator.Add("2,1000").Should().Be(1002);
+        }
+        
+        [TestMethod]
+        public void Add_NumbersGreaterThan1000_ShouldBeIgnoredInResult()
+        {
+            Calculator.Add("2,1001").Should().Be(2);
+        }
     }
 }
