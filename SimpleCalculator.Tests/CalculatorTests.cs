@@ -92,5 +92,11 @@ namespace SimpleCalculator.Tests
         {
             Calculator.Add("2,1001").Should().Be(2);
         }
+        
+        [TestMethod]
+        public void Add_CustomerStringDelimiter_ShouldChangeExpectedDelimiter()
+        {
+            Calculator.Add("//[****]\n1****2****3").Should().Be(6);
+        }
     }
 }
