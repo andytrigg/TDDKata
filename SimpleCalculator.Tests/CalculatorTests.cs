@@ -104,5 +104,11 @@ namespace SimpleCalculator.Tests
         {
             Calculator.Add("//[*][%]\n1*2%3").Should().Be(6);
         }
+        
+        [TestMethod]
+        public void Add_MultipleCustomerStringDelimiterWithMultipleChars_ShouldBeSupported()
+        {
+            Calculator.Add("//[***][%%%]\n1***2%%%3").Should().Be(6);
+        }
     }
 }
